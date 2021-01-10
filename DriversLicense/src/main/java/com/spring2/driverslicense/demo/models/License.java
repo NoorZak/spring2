@@ -1,5 +1,7 @@
 package com.spring2.driverslicense.demo.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -12,6 +14,7 @@ public class License {
     private Long id;
 
     private Integer number;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date expirationDate;
     private String state;
 

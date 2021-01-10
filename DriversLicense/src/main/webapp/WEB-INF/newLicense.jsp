@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <h1>New Person</h1>
-<form:form action="/persons" method="post" modelAttribute="license">
+<form:form action="/licenses" method="post" modelAttribute="license">
 
 
     <p>
@@ -12,7 +12,7 @@
         <form:errors path="person"/>
         <form:select path="person">
             <c:forEach items="${ persons }" var="p">
-                <form:option value="${ p.id }">${ p.firstName } ${ p.lastName }</form:option>
+                <form:option value="${ p }">${ p.firstName } ${ p.lastName }</form:option>
             </c:forEach>
         </form:select>
     </p>
