@@ -1,0 +1,7 @@
+sss
+
+git init
+git add .
+git commit -m "first"
+git remote add origin https://github.com/NoorZak/spring2.git
+git push -u origin master
