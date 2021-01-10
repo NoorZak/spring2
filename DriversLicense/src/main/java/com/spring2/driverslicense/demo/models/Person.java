@@ -25,6 +25,12 @@ public class Person {
     public Person() {
 
     }
+    public Person(String firstName, String lastName, License license) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.license = license;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -72,11 +78,13 @@ public class Person {
     public License getLicense() {
         return license;
     }
-
-    public Person(String firstName, String lastName, License license) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.license = license;
+    @PrePersist
+    protected void onCreate(){
+        this.createdAt = new Date();
+    }
+    @PreUpdate
+    protected void onUpdate(){
+        this.updatedAt = new Date();
     }
 
     // ...

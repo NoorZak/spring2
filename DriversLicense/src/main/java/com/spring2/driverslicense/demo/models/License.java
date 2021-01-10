@@ -11,7 +11,7 @@ public class License {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String number;
+    private Integer number;
     private Date expirationDate;
     private String state;
 
@@ -26,7 +26,7 @@ public class License {
 
     }
 
-    public License(Long id, String number, Date expirationDate, String state, Person person) {
+    public License(Long id, Integer number, Date expirationDate, String state, Person person) {
         this.id = id;
         this.number = number;
         this.expirationDate = expirationDate;
@@ -38,7 +38,15 @@ public class License {
         return id;
     }
 
-    public String getNumber() {
+
+    public String getNumberAsString() {
+        int numZeros = 7 - String.valueOf(this.number).length();
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < numZeros; i++)
+            sb.append('0');
+        return String.format("%s%d", sb, this.number);
+    }
+    public int getNumber() {
         return number;
     }
 
@@ -66,7 +74,7 @@ public class License {
         this.id = id;
     }
 
-    public void setNumber(String number) {
+    public void setNumber(int number) {
         this.number = number;
     }
 
@@ -89,6 +97,17 @@ public class License {
     public void setPerson(Person person) {
         this.person = person;
     }
+
+
+    @PrePersist
+    protected void onCreate(){
+        this.createdAt = new Date();
+    }
+    @PreUpdate
+    protected void onUpdate(){
+        this.updatedAt = new Date();
+    }
+
     // ...
     // getters and setters removed for brevity
     // ...
