@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+
 @Table(name="question")
 
 public class Question {
@@ -16,6 +17,7 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String question;
+
     @Column(updatable=false)
     private Date createdAt;
     private Date updatedAt;
