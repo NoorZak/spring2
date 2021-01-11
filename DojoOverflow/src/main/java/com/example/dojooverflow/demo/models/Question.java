@@ -21,6 +21,7 @@ public class Question {
     @Column(updatable=false)
     private Date createdAt;
     private Date updatedAt;
+
     @OneToMany(mappedBy="question", fetch = FetchType.LAZY)
     private List<Answer> answers;
 
