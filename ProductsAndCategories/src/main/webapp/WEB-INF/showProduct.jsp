@@ -29,10 +29,10 @@
     </ul>
 
 
-<form:form action="/products/${product.id}" method="post" modelAttribute="category">
+<form:form action="/products/${product.id}" method="post" modelAttribute="association">
 
     <input type="hidden" name="_method" value="put">
-
+    <p>
     <form:label path="category">Categories</form:label>
     <form:errors path="category"/>
     <form:select path="category">
@@ -40,7 +40,7 @@
             <form:option value="${ c }">${ c.name }</form:option>
         </c:forEach>
     </form:select>
-
+    </p>
 
     <input type="submit"  value="submit" />
 </form:form>

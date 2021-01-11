@@ -19,7 +19,7 @@ public class Product {
     private Date updatedAt;
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
-            name = "categories_products",
+            name = "associations",
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id")
     )

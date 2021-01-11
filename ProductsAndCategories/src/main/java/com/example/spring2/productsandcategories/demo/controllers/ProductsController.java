@@ -1,5 +1,6 @@
 package com.example.spring2.productsandcategories.demo.controllers;
 
+import com.example.spring2.productsandcategories.demo.models.Association;
 import com.example.spring2.productsandcategories.demo.models.Category;
 import com.example.spring2.productsandcategories.demo.models.Product;
 import com.example.spring2.productsandcategories.demo.services.CategoryService;
@@ -53,10 +54,10 @@ public class ProductsController {
     }
 
     @RequestMapping("/products/{id}")
-    public String show(@PathVariable("id") Long id, Model model) {
+    public String show(@PathVariable("id") Long id,@ModelAttribute("association") Association association, Model model) {
         Product product = productService.findProduct(id);
         model.addAttribute("product", product);
-        model.addAttribute("categories", categoryService.allCategories());
+        model.addAttribute("categories", categoryService.findUnCategorized(id));
 
         return "showProduct.jsp";
     }
@@ -64,13 +65,13 @@ public class ProductsController {
 
 
     @RequestMapping(value="/products/{id}", method=RequestMethod.PUT)
-    public String update(@Valid @ModelAttribute("category") Category category,@PathVariable("id") Long id, BindingResult result) {
+    public String update(@Valid @ModelAttribute("association") Association association, @PathVariable("id") Long id, BindingResult result) {
         if (result.hasErrors()) {
             return "showProduct.jsp";
         } else {
             Product p = productService.findProduct(id);
-            productService.updateProduct(p.getId(),p.getName(),p.getDescription(),p.getPrice(),category);
-            return "redirect:/showProduct.jsp";
+            productService.updateProduct(p.getId(),p.getName(),p.getDescription(),p.getPrice(),association.getCategory());
+            return "redirect:/products/{id}";
         }
     }
 

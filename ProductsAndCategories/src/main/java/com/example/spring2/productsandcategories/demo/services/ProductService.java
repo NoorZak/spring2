@@ -20,6 +20,11 @@ public class ProductService {
         return productRepository.findAll();
     }
 
+
+    public List<Product> findUnCategorized(long category_id){
+        return  productRepository.findUnCategorized(category_id);
+
+    }
     public Product findProduct(Long id) {
         Optional<Product> optionalProduct = productRepository.findById(id);
         if(optionalProduct.isPresent()) {
