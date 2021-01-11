@@ -27,7 +27,6 @@ public class LicenseService {
             return null;
         }
     }
-
     public void deleteLicense(Long id) {
         licenseRepository.deleteById(id);
     }
@@ -36,6 +35,7 @@ public class LicenseService {
         l.setNumber(this.generateLicenseNumber());
         return licenseRepository.save(l);
     }
+
     public int generateLicenseNumber() {
         License l = licenseRepository.findTopByOrderByNumberDesc();
         if(l == null)

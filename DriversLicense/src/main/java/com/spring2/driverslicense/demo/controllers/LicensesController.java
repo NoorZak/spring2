@@ -32,8 +32,9 @@ public class LicensesController {
 
     @RequestMapping("/licenses/new")
     public String newLicense(@ModelAttribute("license") License license,Model model) {
-       model.addAttribute("persons",personService.allPersons());
-        return "newLicense.jsp";
+       model.addAttribute("persons",personService.findUnlicensed());
+        System.out.println(personService.findUnlicensed());
+       return "newLicense.jsp";
     }
 
 

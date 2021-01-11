@@ -24,6 +24,7 @@ public class PersonService {
         return personRepository.save(l);
     }
     // retrieves a book
+
     public Person findPerson(Long id) {
         Optional<Person> optionalPerson = personRepository.findById(id);
         if(optionalPerson.isPresent()) {
@@ -35,6 +36,10 @@ public class PersonService {
 
     public void deletePerson(Long id) {
         personRepository.deleteById(id);
+    }
+
+    public List<Person> findUnlicensed() {
+        return personRepository.findUnlicensed();
     }
 
 

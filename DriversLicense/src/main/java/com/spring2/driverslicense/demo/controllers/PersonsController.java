@@ -24,6 +24,7 @@ public class PersonsController {
         return "newUser.jsp";
     }
 
+
     @RequestMapping("/persons/{id}")
     public String show(@PathVariable("id") Long id,Model model) {
         Person person = personService.findPerson(id);

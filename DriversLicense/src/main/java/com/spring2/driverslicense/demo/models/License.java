@@ -49,6 +49,7 @@ public class License {
             sb.append('0');
         return String.format("%s%d", sb, this.number);
     }
+
     public int getNumber() {
         return number;
     }
