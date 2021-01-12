@@ -67,7 +67,7 @@
     </div>
 
 
-        <form:hidden path="question" value="${ question.id }"/>
+<%--        <form:hidden path="question" value="${ question.id }"/>--%>
         <div class="ml-5">
         <input type="submit"  value="submit" />
         </div>

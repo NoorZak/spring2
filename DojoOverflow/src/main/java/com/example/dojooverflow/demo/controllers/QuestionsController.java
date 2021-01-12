@@ -84,7 +84,11 @@ public class QuestionsController {
         if (result.hasErrors()) {
             return "addAnswer.jsp";
         } else {
-            answerService.createAnswer(answer);
+            answerService.createAnswer(answer,questionService.findQuestion(id));
+//            answerService.createAnswer(answer);
+
+
+
             return "redirect:/questions/{id}";
         }
     }

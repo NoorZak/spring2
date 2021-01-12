@@ -40,8 +40,11 @@ public class AnswerService {
         answerRepository.deleteById(id);
     }
 
-    public Answer createAnswer(Answer l) {
-        return answerRepository.save(l);
+    public Answer createAnswer(Answer a,Question q)
+
+    {
+        a.setQuestion(q);
+        return answerRepository.save(a);
     }
 
 
