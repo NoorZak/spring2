@@ -2,6 +2,7 @@ package com.spring2.dojosninjas.demo.services;
 
 import com.spring2.dojosninjas.demo.repositories.DojoRepository;
 import com.spring2.dojosninjas.demo.models.Dojo;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,6 +37,10 @@ public class DojoService {
          return dojoRepository.save(l);
     }
 
+    public List<Object[]> f(){
+
+        return  dojoRepository.findAllDojosNamesWithId2();
+    }
 
 
 }

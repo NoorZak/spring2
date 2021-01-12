@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class NinjasController {
@@ -26,6 +27,16 @@ public class NinjasController {
 
     @RequestMapping(value="/")
     public String get() {
+/*
+        List<Object[]> dojos = dojoService.f();
+        Object[] dojo = dojos.get(1);
+        Object dojoId = dojo[0];
+        Object dojoName = dojo[1];
+
+        System.out.println(dojo);
+        System.out.println(dojo[0]);
+        System.out.println(dojo[1]);
+*/
         return "hi.jsp";
     }
 
