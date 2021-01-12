@@ -2,6 +2,7 @@ package com.example.dojooverflow.demo.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -30,9 +31,13 @@ public class Tag {
     private List<Question> questions;
 
     public Tag() {
+    questions= new ArrayList<Question>() ;
+
     }
 
     public Tag(Long id, String subject) {
+        questions= new ArrayList<Question>() ;
+
         this.id = id;
         this.subject = subject;
     }

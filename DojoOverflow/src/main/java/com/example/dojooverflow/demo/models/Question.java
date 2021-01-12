@@ -4,6 +4,7 @@ import com.example.dojooverflow.demo.models.Answer;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -36,10 +37,12 @@ public class Question {
     private List<Tag> tags;
 
     public Question() {
-
+    tags = new ArrayList<Tag>();
     }
 
     public Question(Long id, String question) {
+
+        tags = new ArrayList<Tag>();
         this.id = id;
         this.question = question;
     }
@@ -48,6 +51,10 @@ public class Question {
         return tags;
     }
 
+
+    public void addTag (Tag tag) {
+        tags.add(tag);
+    }
     public void setTags(List<Tag> tags) {
         this.tags = tags;
     }
