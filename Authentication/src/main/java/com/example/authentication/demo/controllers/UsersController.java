@@ -2,7 +2,7 @@ package com.example.authentication.demo.controllers;
 
 import com.example.authentication.demo.models.User;
 import com.example.authentication.demo.services.UserService;
-import org.mindrot.jbcrypt.BCrypt;
+import com.example.authentication.demo.validator.UserValidator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,9 +17,11 @@ import javax.validation.Valid;
 @Controller
 public class UsersController {
     private final UserService userService;
+    private final UserValidator userValidator;
 
-    public UsersController(UserService userService) {
+    public UsersController(UserService userService, UserValidator userValidator) {
         this.userService = userService;
+        this.userValidator = userValidator;
     }
 
     @RequestMapping("/registration")
@@ -34,10 +36,13 @@ public class UsersController {
 
     @RequestMapping(value="/registration", method= RequestMethod.POST)
     public String registerUser(@Valid @ModelAttribute("user") User user, BindingResult result, HttpSession session) {
-      if(result.hasErrors())
+        userValidator.validate(user, result);
+
+        if(result.hasErrors())
           return "registrationPage.jsp";
       else {
           userService.registerUser(user);
+
           session.setAttribute("user_id", user.getId());
           return "redirect:/home";
       }// if result has errors, return the registration page (don't worry about validations just now)
