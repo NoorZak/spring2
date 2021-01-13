@@ -80,7 +80,7 @@ public class QuestionsController {
 
 
     @RequestMapping(value="/questions/{id}", method=RequestMethod.PUT)
-    public String update(@Valid @ModelAttribute("answer") Answer answer, @PathVariable("id") Long id, BindingResult result) {
+    public String update( @ModelAttribute("answer") Answer answer, @PathVariable("id") Long id, BindingResult result) {
         if (result.hasErrors()) {
             return "addAnswer.jsp";
         } else {
